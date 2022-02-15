@@ -1,0 +1,7 @@
+const names = require('./4-names')
+const sayhi = require('./5-utils')
+const data = require('./6-alternative-flavor')
+const valuesom = require('./7-mind-grenade')
+console.log(names, sayhi)
+console.log(data)
+console.log(valuesom) 
