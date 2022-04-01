@@ -4,16 +4,35 @@ const newitems = _.flattenDeep(items);
 console.log(newitems);
 console.log("Hello Pakistan2")
 /////////////////////////////////////////////////////
-const { readFile ,writeFile} = require('fs').promises
-// const util = require('util')
-// const readFilePromise = util.promisify(readFile)
-// const writeFilePromise = util.promisify(writeFile)
+// const http = require('http')
+// const server = http.createServer()
+// server.on('request',(req,res) => {
+//   res.end('welcome')
+// })
+// server.listen(5000)
 
-const eventEmmiter = require('events')
-const customEmitter = new eventEmmiter()
-customEmitter.on('response', () => {
-  console.log(`recieved data`)
+////////////////////////////
+
+const http = require('http')
+
+const server = http.createServer((req,res) =>{
+    console.log(req.method)
+    const url = req.url
+
+    if (url === '/') {
+            res.writeHead(200,{'content-type':'text/html'})
+            res.write('<h1>Home Page</h1>')
+            res.end()
+    }
+     else if (url === '/about'){
+        res.writeHead(200,{'content-type':'text/html'})
+        res.write('<h1>About Page</h1>')
+        res.end()
+     } 
+     else {
+        res.writeHead(200,{'content-type':'text/html'})
+        res.write('<h1>Page not Found</h1>')
+        res.end()
+     }
 })
-
-
-customEmitter.emit('response')
+server.listen(5000)
